@@ -1,0 +1,26 @@
+# action.yml
+name: 'GitHub App Token Generator'
+description: 'Generate GitHub App token based on provided GitHub App arguments'
+inputs:
+  app-id:  # Application ID
+    description: 'Application ID'
+    required: true
+    default: ''
+  organization:  # Organization Name
+    description: 'Organization'
+    required: true
+    default: ''
+  private-key:  # Private Key
+    description: 'Private key'
+    required: true
+    default: ''
+outputs:
+  token: # id of output
+    description: 'GitHub App token'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.app-id }}
+    - ${{ inputs.organization }}
+    - ${{ inputs.private-key }}
