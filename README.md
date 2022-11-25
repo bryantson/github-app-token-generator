@@ -26,7 +26,22 @@ Python script generates JWT token with provided GitHub App ID and GitHub APP PEM
 
 ## How to run
 
-You need to create a GitHub Actions pipeline like one below and placed under `.github/workflows` folder (e.g. `github/workflows/action-list-repos.yml`)
+To call this action, you need to include `bryantson/github-app-token-generator` with whatever the version that you want to use. For example,
+
+```yaml
+uses: bryantson/github-app-token-generator@1.0
+id: generate-token
+with:
+    app-id: ${{ github.event.inputs.app-id}}
+    organization: ${{ github.event.inputs.organization }}
+    private-key: ${{ secrets.PRIVATE_KEY }}
+```
+
+For values passing to `with` can come from user inputs, Secrets, or whatever, but the keys (`app-id`, `organization`, and `private-key`) have to match. Value of `id` can be a name that you want to call it, but you need to define it to pass the token to next step.
+
+Then, you need to grab the output like this `${{ steps.generate-token.outputs.token }}`, for example.
+
+See an example of a GitHub Actions pipeline like one below and placed under `.github/workflows` folder (e.g. `github/workflows/action-list-repos.yml`)
 
 ```yaml
 name: List repositories based on GitHub App token
