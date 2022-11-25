@@ -1,5 +1,5 @@
 # action.yml
-name: 'GitHub App Token Generator'
+name: 'GitHub App Token Generator - Python based'
 description: 'Generate GitHub App token based on provided GitHub App arguments'
 inputs:
   app-id:  # Application ID
