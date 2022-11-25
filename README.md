@@ -50,7 +50,7 @@ jobs:
     steps:
 
       - name: JWT Token
-        uses: actions/jwt-token-generator-python@v1
+        uses: bryantson/github-app-token-generator@1.0
         id: generate-token
         with:
           app-id: ${{ github.event.inputs.app-id}}
@@ -63,8 +63,8 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $GH_TOKEN" \
             https://api.github.com/orgs/$ORG/repos
-        with:
-          GH_TOKEN: ${{ steps.generate-token.outputs.token }}"
+        env:
+          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
           ORG: ${{ github.event.inputs.organization }}
 ```
 
