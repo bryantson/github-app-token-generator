@@ -24,3 +24,6 @@ runs:
     - ${{ inputs.app-id }}
     - ${{ inputs.organization }}
     - ${{ inputs.private-key }}
+branding:
+  icon: 'award'
+  color: 'red'
