@@ -66,7 +66,7 @@ jobs:
     steps:
 
       - name: JWT Token
-        uses: bryantson/github-app-token-generator@1.0
+        uses: bryantson/github-app-token-generator@v1
         id: generate-token
         with:
           app-id: ${{ github.event.inputs.app-id}}
