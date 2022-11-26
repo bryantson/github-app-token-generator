@@ -1,4 +1,4 @@
-FROM python:3.9.15-slim
+FROM ghcr.io/bryantson/python:3.9.15-slim
 
 COPY generate-jwt.py generate-jwt.py
 

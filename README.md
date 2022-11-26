@@ -1,6 +1,6 @@
 # GitHub App Generator - Python based
 
-This GitHub ACtions leverages Python script in Docker container to generate GitHub App token based on your organization.
+This GitHub Actions leverages Python script and Docker container to generate GitHub App token based on your organization.
 
 ## How does this work?
 
@@ -8,15 +8,16 @@ Before getting any further, it will be good to have some understanding about Git
 
 To learn more about GitHub App, [please follow this guide](https://docs.github.com/en/enterprise-cloud@latest/developers/apps/getting-started-with-apps/about-apps). However, to give a little overview of how GitHub App can work for this automation, here is a short overview. GitHub App is an unique app that can be installed into GitHub organization(s) with granular permissions you can set to (1) listen to GitHub webhook events and/or (2) perform operations on GitHub resources like Pull Requests, Secrets, Issues, commits, etc. Although it is commonly thought as GitHub App needs to be created an application and to be deployed somewhere, GitHub App can generate this unique GitHub App token, which is like an OAuth token, to perform actions in behalf of a human user, meaning that you don't need to use Personal Access Token (PAT).
 
-To talk to GitHub App, you need two things: GitHub App ID and GitHub PEM, which you can get by generating a GitHub App. These are two GitHub Secrets that you need to configure in your repository:
+To talk to GitHub App, you need two things: GitHub App ID and GitHub PEM, which you can get by generating a GitHub App. These are is a GitHub Secret that you need to configure in your repository:
+
+- `private-key` which you need to provide as a Secret
+
+And you can pass these information as input values, but you can also read as environment values or Secrets.
 
 - `app-id` which you can provide as either input or secrets
 - `organization` which you can provide as either input or secrets
-- `private-key` which you need to provide as a Secret
-
 
 Python script generates JWT token with provided GitHub App ID and GitHub APP PEM to generate GitHub App Token and grab GitHub App installation id based on organization name and GitHub App token. Next, this script calls an endpoint that generated GitHub App based on temporary JWT token and GitHub App installation id. Lastly, Python script sets the output so it can be passed onto next GitHub Action job step.
-
 
 ## Prerequisites
 
