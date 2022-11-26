@@ -30,7 +30,7 @@ Python script generates JWT token with provided GitHub App ID and GitHub APP PEM
 To call this action, you need to include `bryantson/github-app-token-generator` with whatever the version that you want to use. For example,
 
 ```yaml
-uses: bryantson/github-app-token-generator@1.0
+uses: bryantson/github-app-token-generator@v1
 id: generate-token
 with:
     app-id: ${{ github.event.inputs.app-id}}
